@@ -1,4 +1,4 @@
-console.log("from const.js");
+import { fetchCountries, fetchAirports, fetchFlights } from "./api";
 
 const navbar = document.querySelector("#navbar");
 const content = document.querySelector("#content");
