@@ -1,20 +1,25 @@
-import {
-  fetchCountries,
-  fetchAirports,
-  fetchFlights,
-  fetchLocation,
-} from "./api";
+import { fetchCountries, fetchAirports } from "./api";
+import { countryInput, invalidText } from "./const";
 
-const navbar = document.querySelector("#navbar");
-const content = document.querySelector("#content");
-const footer = document.querySelector("#footer");
+let countries = await fetchCountries();
+export let airports = [];
 
-navbar.addEventListener("click", (e) =>
-  console.log("navbar clicked", e.target)
-);
-content.addEventListener("click", (e) =>
-  console.log("navbar clicked", e.target)
-);
-footer.addEventListener("click", (e) =>
-  console.log("navbar clicked", e.target)
-);
+export async function validateCountry() {
+  const inputVal = countryInput.value.trim();
+  const countryCode = countryInput.dataset.value;
+  const isValidCountry = countries.some(
+    (country) => country.label.toLowerCase() === inputVal.toLowerCase()
+  );
+
+  if (!isValidCountry && inputVal !== "") {
+    setTimeout(() => {
+      invalidText.innerText = "Invalid country.";
+    }, 100);
+  } else {
+    invalidText.innerText = "";
+    airports = await fetchAirports(countryCode);
+  }
+}
+
+countryInput.addEventListener("input", validateCountry);
+countryInput.addEventListener("blur", validateCountry);

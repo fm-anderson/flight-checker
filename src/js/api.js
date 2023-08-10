@@ -6,8 +6,8 @@ export async function fetchLocation() {
     const response = await fetch("https://api.vatcomply.com/geolocate");
     let data = await response.json();
     const location = {
-      name: data.name,
-      code: data.iso2,
+      label: data.name,
+      value: data.iso2,
       flag: data.emoji,
     };
     return location;
@@ -21,9 +21,9 @@ export async function fetchCountries() {
     const response = await fetch("https://restcountries.com/v3.1/all");
     let data = await response.json();
     const countries = data.map((item) => ({
-      name: item.name.common,
+      label: item.name.common,
       continent: item.region,
-      code: item.cca2,
+      value: item.cca2,
     }));
     return countries;
   } catch (err) {
