@@ -5,6 +5,7 @@ import { airports } from "./utils";
 
 let countries = await fetchCountries();
 
+// country input
 autocomplete({
   input: countryInput,
   debounceWaitMs: 200,
@@ -23,6 +24,7 @@ autocomplete({
   },
 });
 
+// airport input
 autocomplete({
   input: airportInput,
   debounceWaitMs: 200,
@@ -45,5 +47,6 @@ autocomplete({
   },
   onSelect: function (item) {
     airportInput.value = item.label;
+    airportInput.dataset.value = item.value;
   },
 });

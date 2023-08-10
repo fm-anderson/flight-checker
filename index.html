@@ -11,11 +11,18 @@
       id="app"
       class="flex h-screen flex-col items-center justify-between text-center"
     >
-      <div id="navbar" class="navbar bg-base-300">
-        <p>Navbar</p>
-      </div>
-      <div id="content" class="w-full max-w-[100vw] px-8 py-8 lg:max-w-[80%]">
-        <div class="grid grid-cols-2">
+      <header id="navbar" class="navbar bg-base-200">
+        <div class="flex-1 gap-1">
+          <img class="w-7" src="./src/assets/images/logo.svg" />
+          <p class="text-xl font-semibold">Flight Checker</p>
+        </div>
+        <div class="flex-none gap-2">
+          <button id="clear-button" class="btn btn-outline">Clear</button>
+        </div>
+      </header>
+
+      <main id="content" class="w-full max-w-[100vw] px-8 py-8 lg:max-w-[80%]">
+        <div id="hero" class="grid grid-cols-2">
           <div>
             <h1
               class="text-center text-3xl font-bold md:text-start lg:text-7xl"
@@ -37,7 +44,7 @@
           </div>
         </div>
         <div class="flex justify-start">
-          <form class="join">
+          <form id="form" class="join">
             <input
               id="input-country"
               type="text"
@@ -64,10 +71,47 @@
         <div class="ml-1 mt-3 flex gap-1 align-middle text-secondary">
           <p id="invalid-data" class="justify-start font-semibold"></p>
         </div>
-      </div>
-      <div id="footer" class="footer footer-center bg-base-300 p-4">
-        <p>Footer</p>
-      </div>
+      </main>
+
+      <footer id="footer" class="footer items-center bg-base-200 p-4">
+        <div class="grid-flow-col items-center">
+          <p>Copyright © 2023 - Flight Checker</p>
+        </div>
+        <div
+          class="grid-flow-col gap-4 md:place-self-center md:justify-self-end"
+        >
+          <a
+            ><svg
+              class="w-8 fill-inherit"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8.339 18.337H5.667v-8.59h2.672v8.59zM7.003 8.574a1.548 1.548 0 1 1 0-3.096 1.548 1.548 0 0 1 0 3.096zm11.335 9.763h-2.669V14.16c0-.996-.018-2.277-1.388-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248h-2.667v-8.59h2.56v1.174h.037c.355-.675 1.227-1.387 2.524-1.387 2.704 0 3.203 1.778 3.203 4.092v4.71z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </footer>
+      <template id="flights-table">
+        <div class="overflow-x-auto rounded-lg border-2">
+          <div class="bg-base-300">
+            <p class="py-2 font-mono text-sm">departure</p>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Airline</th>
+                <th>Flight</th>
+                <th>Origin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="table-content"></tbody>
+          </table>
+        </div>
+      </template>
     </div>
     <script type="module" src="./src/index.js"></script>
   </body>
