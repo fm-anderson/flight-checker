@@ -12,5 +12,8 @@
     "prettier-plugin-tailwindcss": "^0.1.5",
     "vitawind": "^2.2.4",
     "vite": "^2.4.4"
+  },
+  "dependencies": {
+    "autocompleter": "^9.0.1"
   }
 }
