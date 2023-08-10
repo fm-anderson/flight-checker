@@ -1,7 +1,22 @@
 const baseUrl = "https://airlabs.co/api/v9";
 const apiKey = import.meta.env.VITE_API_KEY;
 
-export const fetchCountries = async () => {
+export async function fetchLocation() {
+  try {
+    const response = await fetch("https://api.vatcomply.com/geolocate");
+    let data = await response.json();
+    const location = {
+      name: data.name,
+      code: data.iso2,
+      flag: data.emoji,
+    };
+    return location;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function fetchCountries() {
   try {
     const response = await fetch("https://restcountries.com/v3.1/all");
     let data = await response.json();
@@ -14,9 +29,9 @@ export const fetchCountries = async () => {
   } catch (err) {
     console.error("Error fetching countries: ", err);
   }
-};
+}
 
-export const fetchAirports = async (country) => {
+export async function fetchAirports(country) {
   try {
     const response = await fetch(
       `${baseUrl}/airports?api_key=${apiKey}&country_code=${country}`
@@ -27,9 +42,9 @@ export const fetchAirports = async (country) => {
   } catch (err) {
     console.error("Error fetching airports: ", err);
   }
-};
+}
 
-export const fetchFlights = async (airport) => {
+export async function fetchFlights(airport) {
   try {
     const response = await fetch(
       `${baseUrl}/schedules?api_key=${apiKey}&dep_iata=${airport}`
@@ -40,4 +55,4 @@ export const fetchFlights = async (airport) => {
   } catch (err) {
     console.error("Error fetching flights: ", err);
   }
-};
+}
