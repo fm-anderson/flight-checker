@@ -1,5 +1,6 @@
 const baseUrl = "https://airlabs.co/api/v9";
 const apiKey = import.meta.env.VITE_API_KEY;
+// vhwNXU!kdwE1
 
 export async function fetchLocation() {
   try {
@@ -44,14 +45,40 @@ export async function fetchAirports(country) {
   }
 }
 
-export async function fetchFlights(airport) {
+export async function fetchDepFlights(airport) {
   try {
     const response = await fetch(
       `${baseUrl}/schedules?api_key=${apiKey}&dep_iata=${airport}`
     );
     let data = await response.json();
-    const flights = data.response;
-    return flights;
+    const depFlights = data.response;
+    return depFlights;
+  } catch (err) {
+    console.error("Error fetching departure flights: ", err);
+  }
+}
+
+export async function fetchArrFlights(airport) {
+  try {
+    const response = await fetch(
+      `${baseUrl}/schedules?api_key=${apiKey}&arr_iata=${airport}`
+    );
+    let data = await response.json();
+    const arrFlights = data.response;
+    return arrFlights;
+  } catch (err) {
+    console.error("Error fetching arrival flights: ", err);
+  }
+}
+
+export async function fetchAirlineName(airline) {
+  try {
+    const response = await fetch(
+      `${baseUrl}/airlines?iata_code=${airline}&api_key=${apiKey}`
+    );
+    let data = await response.json();
+    const airlineName = data.response[0].name;
+    return airlineName;
   } catch (err) {
     console.error("Error fetching flights: ", err);
   }

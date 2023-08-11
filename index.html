@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Flight Checker</title>
   </head>
   <body>
     <div
@@ -22,12 +22,17 @@
       </header>
 
       <main id="content" class="w-full max-w-[100vw] px-8 py-8 lg:max-w-[80%]">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-1">
+          <div id="dep-container"></div>
+          <div id="arr-container"></div>
+        </div>
         <div id="hero" class="grid grid-cols-2">
           <div>
             <h1
-              class="text-center text-3xl font-bold md:text-start lg:text-7xl"
+              class="text-center text-3xl font-bold md:text-start lg:text-6xl"
             >
-              A Great Title For <span class="">Our Users!</span>
+              Check Flight Status
+              <span class="text-accent-focus">From Home!</span>
             </h1>
             <p class="py-6 text-start">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -96,7 +101,7 @@
       <template id="flights-table">
         <div class="overflow-x-auto rounded-lg border-2">
           <div class="bg-base-300">
-            <p class="py-2 font-mono text-sm">departure</p>
+            <p id="table-title" class="py-2 font-mono text-sm"></p>
           </div>
           <table class="table">
             <thead>

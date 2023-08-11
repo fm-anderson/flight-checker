@@ -1,11 +1,16 @@
-import { fetchCountries, fetchAirports, fetchFlights } from "./api";
+import {
+  fetchCountries,
+  fetchAirports,
+  fetchDepFlights,
+  fetchAirlineName,
+  fetchArrFlights,
+} from "./api";
 import {
   airportInput,
   clearButton,
   countryInput,
   heroDiv,
   invalidText,
-  mainContent,
   mainForm,
   resFields,
   template,
@@ -43,15 +48,15 @@ clearButton.addEventListener("click", () => {
 countryInput.addEventListener("blur", validateCountry);
 mainForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  createFlightsList(airportInput.dataset.value);
+  createDepFlightsList(airportInput.dataset.value);
+  createArrFlightsList(airportInput.dataset.value);
 });
 
-//         --         FETCH FLIGTH LOGIC TEMPORARILY HERE         --         //
-
-async function createFlightsList(airportCode) {
+// departure flights list
+async function createDepFlightsList(airportCode) {
   heroDiv.classList.add("hidden");
 
-  const flights = await fetchFlights(airportCode);
+  const flights = await fetchDepFlights(airportCode);
 
   const validFlights = flights.filter((flight) => {
     return resFields.every(
@@ -68,44 +73,131 @@ async function createFlightsList(airportCode) {
   const table = document.importNode(template.content, true);
   const tableDiv = table.querySelector("div");
   tableDiv.id = "dep-table";
+  const title = table.querySelector("#table-title");
+  title.textContent = "departure";
   const tableBody = table.querySelector("#table-content");
 
-  sortedFlights.forEach((flight) => {
-    const row = document.createElement("tr");
-    const timeData = document.createElement("td");
+  let flightCounter = 0;
 
-    if (flight.arr_delayed) {
-      const delayedTimeSpan = document.createElement("span");
-      delayedTimeSpan.className = "text-red-600 line-through";
-      delayedTimeSpan.textContent = parseTime(new Date(flight.arr_time));
-      timeData.appendChild(delayedTimeSpan);
+  await Promise.all(
+    sortedFlights.map(async (flight) => {
+      if (flightCounter >= 50) {
+        return;
+      }
+      const row = document.createElement("tr");
+      const timeData = document.createElement("td");
 
-      const estimatedTimeText = document.createTextNode(
-        ` ${parseTime(new Date(flight.arr_estimated))}`
-      );
-      timeData.appendChild(estimatedTimeText);
-    } else {
-      timeData.textContent = parseTime(new Date(flight.arr_time));
-    }
-    row.appendChild(timeData);
+      if (flight.arr_delayed) {
+        const delayedTimeSpan = document.createElement("span");
+        delayedTimeSpan.className = "text-red-600 line-through";
+        delayedTimeSpan.textContent = parseTime(new Date(flight.arr_time));
+        timeData.appendChild(delayedTimeSpan);
 
-    const airlineData = document.createElement("td");
-    airlineData.textContent = flight.airline_iata;
-    row.appendChild(airlineData);
+        const estimatedTimeText = document.createTextNode(
+          ` ${parseTime(new Date(flight.arr_estimated))}`
+        );
+        timeData.appendChild(estimatedTimeText);
+      } else {
+        timeData.textContent = parseTime(new Date(flight.arr_time));
+      }
+      row.appendChild(timeData);
 
-    const flightDataElem = document.createElement("td");
-    flightDataElem.textContent = flight.flight_iata;
-    row.appendChild(flightDataElem);
+      const airlineData = document.createElement("td");
+      const airlineName = await fetchAirlineName(flight.airline_iata);
+      airlineData.textContent = airlineName;
+      row.appendChild(airlineData);
 
-    const originData = document.createElement("td");
-    originData.textContent = flight.dep_iata;
-    row.appendChild(originData);
+      const flightDataElem = document.createElement("td");
+      flightDataElem.textContent = flight.flight_iata;
+      row.appendChild(flightDataElem);
 
-    const statusData = document.createElement("td");
-    statusData.textContent = flight.status;
-    row.appendChild(statusData);
+      const originData = document.createElement("td");
+      originData.textContent = flight.dep_iata;
+      row.appendChild(originData);
 
-    tableBody.appendChild(row);
-    mainContent.appendChild(table);
+      const statusData = document.createElement("td");
+      statusData.textContent = flight.status;
+      row.appendChild(statusData);
+
+      tableBody.appendChild(row);
+      flightCounter++;
+    })
+  );
+  const tableContainer = document.querySelector("#dep-container");
+  tableContainer.appendChild(table);
+}
+
+// arrivals flights list
+async function createArrFlightsList(airportCode) {
+  heroDiv.classList.add("hidden");
+
+  const flights = await fetchArrFlights(airportCode);
+
+  const validFlights = flights.filter((flight) => {
+    return resFields.every(
+      (field) => flight[field] !== null && flight[field] !== undefined
+    );
   });
+
+  const sortedFlights = validFlights.sort((a, b) => {
+    const arrivalTimeA = new Date(a.arr_time).getTime();
+    const arrivalTimeB = new Date(b.arr_time).getTime();
+    return arrivalTimeA - arrivalTimeB;
+  });
+
+  const table = document.importNode(template.content, true);
+  const tableDiv = table.querySelector("div");
+  tableDiv.id = "arr-table";
+  const title = table.querySelector("#table-title");
+  title.textContent = "arrivals";
+  const tableBody = table.querySelector("#table-content");
+
+  let flightCounter = 0;
+
+  await Promise.all(
+    sortedFlights.map(async (flight) => {
+      if (flightCounter >= 50) {
+        return;
+      }
+      const row = document.createElement("tr");
+      const timeData = document.createElement("td");
+
+      if (flight.arr_delayed) {
+        const delayedTimeSpan = document.createElement("span");
+        delayedTimeSpan.className = "text-red-600 line-through";
+        delayedTimeSpan.textContent = parseTime(new Date(flight.arr_time));
+        timeData.appendChild(delayedTimeSpan);
+
+        const estimatedTimeText = document.createTextNode(
+          ` ${parseTime(new Date(flight.arr_estimated))}`
+        );
+        timeData.appendChild(estimatedTimeText);
+      } else {
+        timeData.textContent = parseTime(new Date(flight.arr_time));
+      }
+      row.appendChild(timeData);
+
+      const airlineData = document.createElement("td");
+      const airlineName = await fetchAirlineName(flight.airline_iata);
+      airlineData.textContent = airlineName;
+      row.appendChild(airlineData);
+
+      const flightDataElem = document.createElement("td");
+      flightDataElem.textContent = flight.flight_iata;
+      row.appendChild(flightDataElem);
+
+      const originData = document.createElement("td");
+      originData.textContent = flight.dep_iata;
+      row.appendChild(originData);
+
+      const statusData = document.createElement("td");
+      statusData.textContent = flight.status;
+      row.appendChild(statusData);
+
+      tableBody.appendChild(row);
+      flightCounter++;
+    })
+  );
+  const tableContainer = document.querySelector("#arr-container");
+  tableContainer.appendChild(table);
 }
