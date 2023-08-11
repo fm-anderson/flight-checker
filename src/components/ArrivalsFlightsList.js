@@ -3,15 +3,17 @@ import { heroDiv, template } from "../js/const";
 import FlightsList from "./FlightsList";
 
 export default class ArrivalFlightsList extends FlightsList {
+  constructor(countryCode) {
+    super(countryCode);
+  }
   async createList(airportCode) {
     this.showClearButton();
     heroDiv.classList.add("hidden");
 
+    await this.fetchAirlines();
     const flights = await fetchArrFlights(airportCode);
     const validFlights = await this.getValidFlights(flights);
     const sortedFlights = this.sortFlights(validFlights);
-
-    await this.fetchAirlines();
 
     const table = document.importNode(template.content, true);
     const tableDiv = table.querySelector("div");

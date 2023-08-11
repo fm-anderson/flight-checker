@@ -20,8 +20,6 @@ themeChange();
 setImageSrc(navLogo);
 setImageSrc(heroImage);
 
-const depFlightsList = new DepartureFlightsList();
-const arrFlightsList = new ArrivalFlightsList();
 const countries = await fetchCountries();
 export let airports = [];
 
@@ -38,6 +36,9 @@ function handleThemeSelector() {
 
 function handleFormSubmit(e) {
   e.preventDefault();
+  const countryCode = countryInput.dataset.value;
+  const depFlightsList = new DepartureFlightsList(countryCode);
+  const arrFlightsList = new ArrivalFlightsList(countryCode);
   depFlightsList.createList(airportInput.dataset.value);
   arrFlightsList.createList(airportInput.dataset.value);
 }

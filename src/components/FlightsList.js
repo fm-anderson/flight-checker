@@ -3,23 +3,32 @@ import { resFields } from "../js/const";
 import { parseTime } from "../js/helpers";
 
 export default class FlightsList {
-  constructor() {
+  constructor(countryCode) {
     this.flightCounter = 0;
     this.airlinesMap = {};
+    this.countryCode = countryCode;
   }
 
   async fetchAirlines() {
-    const allAirlines = await fetchAirlines();
-    allAirlines.forEach((airline) => {
+    const allAirlines = await fetchAirlines(this.countryCode);
+    const validAirlines = allAirlines.filter(
+      (airline) => airline.name && airline.iata_code.length !== 3
+    );
+    validAirlines.forEach((airline) => {
+      console.log(airline);
+      // console.log("airline.iata_code: ", airline.iata_code);
+      // console.log("airline.name: ", airline.name);
       this.airlinesMap[airline.iata_code] = airline.name;
     });
   }
 
   async getValidFlights(flights) {
     return flights.filter((flight) => {
-      return resFields.every(
+      const isValidFields = resFields.every(
         (field) => flight[field] !== null && flight[field] !== undefined
       );
+      const isAirlinePresent = !!this.airlinesMap[flight.airline_iata];
+      return isValidFields && isAirlinePresent;
     });
   }
 
