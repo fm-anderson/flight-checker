@@ -13,10 +13,12 @@ export function parseTime(date) {
 }
 
 export function setImageSrc(element) {
-  if (localStorage.getItem("theme") === "dracula") {
-    element.setAttribute("src", "./src/assets/images/logo-light.png");
+  let theme = localStorage.getItem("theme");
+
+  if (theme === "dracula") {
+    return element.setAttribute("src", "/logo-light.png");
   } else {
-    element.setAttribute("src", "./src/assets/images/logo-dark.png");
+    return element.setAttribute("src", "/logo-dark.png");
   }
 }
 

@@ -28,8 +28,8 @@ countryInput.addEventListener("blur", validateCountry);
 mainForm.addEventListener("submit", handleFormSubmit);
 
 function handleThemeSelector() {
-  setImageSrc(heroImage);
   setImageSrc(navLogo);
+  setImageSrc(heroImage);
 }
 
 function handleFormSubmit(e) {
