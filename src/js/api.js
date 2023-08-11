@@ -1,7 +1,5 @@
 const baseUrl = "https://airlabs.co/api/v9";
 const apiKey = import.meta.env.VITE_API_KEY;
-// jevimir167@royalka.com
-// vhwNXU!kdwE1
 
 export async function fetchLocation() {
   try {
