@@ -1,13 +1,12 @@
 import { themeChange } from "theme-change";
 import ArrivalFlightsList from "../components/ArrivalsFlightsList";
 import DepartureFlightsList from "../components/DepartureFlightsList";
-import { fetchCountries, fetchAirports } from "./api";
-import { clearInputs, setImageSrc } from "./helpers";
+import { fetchAirports } from "./api";
+import { countries, loadCountries, setImageSrc } from "./helpers";
 import {
   airportInput,
   clearButton,
   countryInput,
-  heroDiv,
   heroImage,
   invalidText,
   mainForm,
@@ -19,8 +18,7 @@ import {
 themeChange();
 setImageSrc(navLogo);
 setImageSrc(heroImage);
-
-// const countries = await fetchCountries();
+loadCountries();
 export let airports = [];
 
 countryInput.addEventListener("input", validateCountry);
@@ -44,17 +42,10 @@ function handleFormSubmit(e) {
 }
 
 function handleClearButton() {
-  // heroDiv.classList.remove("hidden");
-  // document.querySelector("#dep-table").remove();
-  // document.querySelector("#arr-table").remove();
-  // clearInputs(countryInput);
-  // clearInputs(airportInput);
-  // clearButton.classList.add("hidden");
   location.reload();
 }
 
 async function validateCountry() {
-  const countries = await fetchCountries();
   const inputVal = countryInput.value.trim();
   const countryCode = countryInput.dataset.value;
   const isValidCountry = countries.some(

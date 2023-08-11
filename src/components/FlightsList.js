@@ -15,9 +15,6 @@ export default class FlightsList {
       (airline) => airline.name && airline.iata_code.length !== 3
     );
     validAirlines.forEach((airline) => {
-      console.log(airline);
-      // console.log("airline.iata_code: ", airline.iata_code);
-      // console.log("airline.name: ", airline.name);
       this.airlinesMap[airline.iata_code] = airline.name;
     });
   }

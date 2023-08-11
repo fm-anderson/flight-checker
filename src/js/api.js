@@ -12,7 +12,7 @@ export async function fetchLocation() {
     };
     return location;
   } catch (err) {
-    console.log(err);
+    console.error("Error fetching location: ", err);
   }
 }
 

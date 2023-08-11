@@ -1,9 +1,7 @@
 import autocomplete from "autocompleter";
-import { fetchCountries } from "./api";
 import { countryInput, airportInput } from "./const";
 import { airports } from "./utils";
-
-let countries = await fetchCountries();
+import { countries } from "./helpers";
 
 // country input
 autocomplete({
