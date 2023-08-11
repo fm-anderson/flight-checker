@@ -9,3 +9,16 @@ export function parseTime(date) {
   };
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
+
+export function clearInputs(input) {
+  input.value = null;
+  input.dataset.value = null;
+}
+
+export function setImageSrc(element) {
+  if (localStorage.getItem("theme") === "dracula") {
+    element.setAttribute("src", "./src/assets/images/logo-light.png");
+  } else {
+    element.setAttribute("src", "./src/assets/images/logo-dark.png");
+  }
+}
