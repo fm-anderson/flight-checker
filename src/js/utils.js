@@ -20,7 +20,7 @@ themeChange();
 setImageSrc(navLogo);
 setImageSrc(heroImage);
 
-const countries = await fetchCountries();
+// const countries = await fetchCountries();
 export let airports = [];
 
 countryInput.addEventListener("input", validateCountry);
@@ -54,6 +54,7 @@ function handleClearButton() {
 }
 
 async function validateCountry() {
+  const countries = await fetchCountries();
   const inputVal = countryInput.value.trim();
   const countryCode = countryInput.dataset.value;
   const isValidCountry = countries.some(
