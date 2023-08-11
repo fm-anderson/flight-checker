@@ -14,6 +14,7 @@
     "vite": "^2.4.4"
   },
   "dependencies": {
-    "autocompleter": "^9.0.1"
+    "autocompleter": "^9.0.1",
+    "theme-change": "^2.5.0"
   }
 }

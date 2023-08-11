@@ -1,5 +1,6 @@
 const baseUrl = "https://airlabs.co/api/v9";
 const apiKey = import.meta.env.VITE_API_KEY;
+// jevimir167@royalka.com
 // vhwNXU!kdwE1
 
 export async function fetchLocation() {
@@ -71,14 +72,16 @@ export async function fetchArrFlights(airport) {
   }
 }
 
-export async function fetchAirlineName(airline) {
+export async function fetchAirlines(country) {
   try {
     const response = await fetch(
-      `${baseUrl}/airlines?iata_code=${airline}&api_key=${apiKey}`
+      `${baseUrl}/airlines?api_key=${apiKey}&country_code=${country}`
     );
     let data = await response.json();
-    const airlineName = data.response[0].name;
-    return airlineName;
+    const validAirlines = data.response.filter(
+      (airline) => airline.iata_code !== null && airline.name !== null
+    );
+    return validAirlines;
   } catch (err) {
     console.error("Error fetching flights: ", err);
   }
