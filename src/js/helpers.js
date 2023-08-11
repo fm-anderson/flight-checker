@@ -1,4 +1,6 @@
 import { fetchCountries } from "./api";
+import blackLogo from "../images/logo-dark.png";
+import whiteLogo from "../images/logo-light.png";
 
 export function parseTime(date) {
   if (!(date instanceof Date && !isNaN(date.getTime()))) {
@@ -16,9 +18,9 @@ export function setImageSrc(element) {
   let theme = localStorage.getItem("theme");
 
   if (theme === "dracula") {
-    return element.setAttribute("src", "/logo-light.png");
+    return element.setAttribute("src", whiteLogo);
   } else {
-    return element.setAttribute("src", "/logo-dark.png");
+    return element.setAttribute("src", blackLogo);
   }
 }
 
