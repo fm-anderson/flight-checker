@@ -76,6 +76,10 @@ export default class FlightsList {
     originData.textContent = flight.dep_iata;
     row.appendChild(originData);
 
+    const destinationData = document.createElement("td");
+    destinationData.textContent = flight.arr_iata;
+    row.appendChild(destinationData);
+
     const statusData = document.createElement("td");
     statusData.textContent = flight.status;
     row.appendChild(statusData);
