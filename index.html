@@ -2,24 +2,155 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Flight Checker</title>
   </head>
   <body>
     <div
       id="app"
       class="flex h-screen flex-col items-center justify-between text-center"
     >
-      <div id="navbar" class="navbar bg-base-300">
-        <p>Navbar</p>
-      </div>
-      <div id="content" class="w-full bg-base-200 px-8">
-        <p>Content</p>
-      </div>
-      <div id="footer" class="footer footer-center bg-base-300 p-4">
-        <p>Footer</p>
-      </div>
+      <header id="navbar" class="navbar bg-base-200 px-4">
+        <div class="flex-1 gap-1">
+          <img id="navbar-logo" class="w-7" />
+          <a href="/" class="no-underline">
+            <p class="text-xl font-semibold text-base-content">
+              Flight Checker
+            </p>
+          </a>
+        </div>
+        <button
+          class="theme-selector"
+          data-toggle-theme="light,dracula"
+          data-act-class="ACTIVECLASS"
+        >
+          <label class="swap-rotate swap">
+            <input type="checkbox" />
+            <svg
+              class="swap-on pointer-events-none h-10 w-10 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"
+              />
+            </svg>
+            <svg
+              class="swap-off pointer-events-none h-10 w-10 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"
+              />
+            </svg>
+          </label>
+        </button>
+      </header>
+
+      <main id="content" class="w-full max-w-[100vw] px-8 py-8 lg:max-w-[80%]">
+        <div id="hero" class="grid grid-cols-2">
+          <div>
+            <h1
+              class="text-center text-3xl font-bold md:text-start lg:text-6xl"
+            >
+              Check Flight Status
+              <span class="text-accent">From Home!</span>
+            </h1>
+            <p class="py-6 text-start">
+              Instantly access real-time flight updates for global airports.
+              Whether you're planning a trip, picking up a loved one, or just
+              staying informed, get accurate, up-to-the-minute details all from
+              the comfort of your home.
+            </p>
+          </div>
+          <div class="flex justify-end">
+            <img
+              id="hero-img"
+              class="w-80"
+              src="./src/assets/images/logo-dark.png"
+            />
+          </div>
+        </div>
+        <div class="flex justify-start">
+          <form id="form" class="join">
+            <input
+              id="input-country"
+              type="text"
+              name="country"
+              placeholder="Country"
+              autocomplete="off"
+              required
+              class="input join-item input-bordered"
+            />
+            <input
+              id="input-airport"
+              type="text"
+              name="airport"
+              placeholder="Airport"
+              autocomplete="off"
+              required
+              class="input join-item input-bordered w-96"
+            />
+            <button class="btn join-item border-base-300 bg-base-300">
+              See flights
+            </button>
+          </form>
+          <div class="ml-2 flex-none gap-2">
+            <button id="clear-button" class="btn btn-accent hidden">
+              Clear
+            </button>
+          </div>
+        </div>
+        <div class="ml-1 mt-3 flex gap-1 align-middle text-secondary">
+          <p id="invalid-data" class="justify-start font-semibold"></p>
+        </div>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div id="dep-container"></div>
+          <div id="arr-container"></div>
+        </div>
+      </main>
+
+      <footer id="footer" class="footer items-center bg-base-200 p-4">
+        <div class="grid-flow-col items-center">
+          <p>Copyright © 2023 - Flight Checker</p>
+        </div>
+        <div
+          class="grid-flow-col gap-4 md:place-self-center md:justify-self-end"
+        >
+          <a
+            ><svg
+              class="w-8 fill-inherit"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8.339 18.337H5.667v-8.59h2.672v8.59zM7.003 8.574a1.548 1.548 0 1 1 0-3.096 1.548 1.548 0 0 1 0 3.096zm11.335 9.763h-2.669V14.16c0-.996-.018-2.277-1.388-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248h-2.667v-8.59h2.56v1.174h.037c.355-.675 1.227-1.387 2.524-1.387 2.704 0 3.203 1.778 3.203 4.092v4.71z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </footer>
+      <template id="flights-table">
+        <div class="overflow-x-auto rounded-lg border-2">
+          <div class="bg-base-300">
+            <p id="table-title" class="py-2 font-mono text-sm"></p>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Airline</th>
+                <th>Flight</th>
+                <th>Origin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="table-content"></tbody>
+          </table>
+        </div>
+      </template>
     </div>
     <script type="module" src="./src/index.js"></script>
   </body>
