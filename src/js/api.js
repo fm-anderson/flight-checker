@@ -1,13 +1,15 @@
 const baseUrl = "https://airlabs.co/api/v9";
 const apiKey = import.meta.env.VITE_API_KEY;
+// jevimir167@royalka.com
+// vhwNXU!kdwE1
 
 export async function fetchLocation() {
   try {
     const response = await fetch("https://api.vatcomply.com/geolocate");
     let data = await response.json();
     const location = {
-      name: data.name,
-      code: data.iso2,
+      label: data.name,
+      value: data.iso2,
       flag: data.emoji,
     };
     return location;
@@ -21,9 +23,9 @@ export async function fetchCountries() {
     const response = await fetch("https://restcountries.com/v3.1/all");
     let data = await response.json();
     const countries = data.map((item) => ({
-      name: item.name.common,
+      label: item.name.common,
       continent: item.region,
-      code: item.cca2,
+      value: item.cca2,
     }));
     return countries;
   } catch (err) {
@@ -44,14 +46,42 @@ export async function fetchAirports(country) {
   }
 }
 
-export async function fetchFlights(airport) {
+export async function fetchDepFlights(airport) {
   try {
     const response = await fetch(
       `${baseUrl}/schedules?api_key=${apiKey}&dep_iata=${airport}`
     );
     let data = await response.json();
-    const flights = data.response;
-    return flights;
+    const depFlights = data.response;
+    return depFlights;
+  } catch (err) {
+    console.error("Error fetching departure flights: ", err);
+  }
+}
+
+export async function fetchArrFlights(airport) {
+  try {
+    const response = await fetch(
+      `${baseUrl}/schedules?api_key=${apiKey}&arr_iata=${airport}`
+    );
+    let data = await response.json();
+    const arrFlights = data.response;
+    return arrFlights;
+  } catch (err) {
+    console.error("Error fetching arrival flights: ", err);
+  }
+}
+
+export async function fetchAirlines(country) {
+  try {
+    const response = await fetch(
+      `${baseUrl}/airlines?api_key=${apiKey}&country_code=${country}`
+    );
+    let data = await response.json();
+    const validAirlines = data.response.filter(
+      (airline) => airline.iata_code !== null && airline.name !== null
+    );
+    return validAirlines;
   } catch (err) {
     console.error("Error fetching flights: ", err);
   }
