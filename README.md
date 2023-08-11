@@ -2,17 +2,19 @@
 
 ## About The Project
 
-TripleTen - Code Jam August 2023
+Instantly access real-time flight updates for global airports. Whether you're planning a trip, picking up a loved one, or just staying informed, get accurate, up-to-the-minute details all from the comfort of your home.
 
-**Built with:** [Vite](https://vitejs.dev/) • [JavaScript](https://www.javascript.com/) • [TailwindCSS](https://tailwindcss.com/) • [DaisyUI](https://daisyui.com/)
+**Built with:** [Vite](https://vitejs.dev/) • [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) • [JavaScript](https://www.javascript.com/) • [TailwindCSS](https://tailwindcss.com/) • [DaisyUI](https://daisyui.com/)
 
 ### Features
 
-- feature
-- feature
-- feature
+- Country auto complete
+- Airport auto complete
+- Real-time flight updates
+- Flight delay indications
+- Dark and Light theme
 
-**Try it →** live link
+**Try it →** https://flightchecker.netlify.app
 
 ## Getting Started
 
@@ -30,31 +32,41 @@ This project was bootstrapped with [Vite](https://github.com/vitejs/vite). Ensur
    ```sh
    cd flight-checker
    ```
-3. Install dependencies
+3. Create a .env file in the project directory and add your API key:
+
+   ```sh
+   echo "VITE_API_KEY=paste-api-key-without-quotes-here" > .env
+   ```
+
+4. Install dependencies
    ```sh
    npm install
    ```
-4. Run the application
+5. Run the application
    ```sh
    npm run dev
    ```
-5. The application should be running on http://localhost:3000
+6. The website should be running on http://localhost:3000
 
-## Collaborators
+## Contributing
 
-| [Git/Github Workflow](https://fm-anderson.notion.site/fm-anderson/GIT-GITHUB-WORKFLOW-36c62b18a2c4439797149d7c79a22d12) |
-| ----------------------------------------------------------------------------------------------------------------------- |
-|                                                                                                                         |
-| [Anderson Marques](https://github.com/fm-anderson)                                                                      |
-| [Dillon Arnold](https://github.com/Dillona25)                                                                           |
-| [Mirko Zlatunic](https://github.com/mirkozlatunic)                                                                      |
+[Git/Github Workflow](https://fm-anderson.notion.site/fm-anderson/GIT-GITHUB-WORKFLOW-36c62b18a2c4439797149d7c79a22d12)
 
-## Usage
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-1. Step 1
-2. Step 2
-3. Step 3
+## Libraries
+
+| Library       | GitHub                                      |
+| ------------- | ------------------------------------------- |
+| tailwindcss   | https://github.com/tailwindlabs/tailwindcss |
+| daisyui       | https://github.com/saadeghi/daisyui         |
+| theme-change  | https://github.com/saadeghi/theme-change    |
+| autocompleter | https://github.com/kraaden/autocomplete     |
 
 ## API
 
-[AirLabs](https://airlabs.co/) provides real-time flight status to the fligth checker app.
+[AirLabs](https://airlabs.co/) provides real-time flight status.
+
+[VatComply](https://vatcomply.com/) provides user geolocation.
+
+[RestCountries](https://restcountries.com/) provides auto-complete list.
