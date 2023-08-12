@@ -26,7 +26,7 @@ export default class DepartureFlightsList extends FlightsList {
       if (this.flightCounter >= 50) {
         break;
       }
-      const row = this.createFlightRow(flight);
+      const row = this.createFlightRow(flight, "departure");
       tableBody.appendChild(row);
       this.flightCounter++;
     }

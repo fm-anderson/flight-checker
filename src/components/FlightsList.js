@@ -44,26 +44,30 @@ export default class FlightsList {
     });
   }
 
-  createFlightRow(flight) {
+  createFlightRow(flight, type) {
     const row = document.createElement("tr");
     const timeData = document.createElement("td");
 
     if (flight.arr_delayed) {
       const delayedTimeSpan = document.createElement("span");
-      delayedTimeSpan.className = "text-red-600 line-through";
+      delayedTimeSpan.className = "text-red-600 line-through md:hidden";
       delayedTimeSpan.textContent = parseTime(new Date(flight.arr_time));
       timeData.appendChild(delayedTimeSpan);
 
-      const estimatedTimeText = document.createTextNode(
-        ` ${parseTime(new Date(flight.arr_estimated))}`
-      );
-      timeData.appendChild(estimatedTimeText);
+      const estimatedTimeSpan = document.createElement("span");
+      estimatedTimeSpan.className = "hidden md:inline";
+      estimatedTimeSpan.textContent = ` ${parseTime(
+        new Date(flight.arr_estimated)
+      )}`;
+      timeData.appendChild(estimatedTimeSpan);
     } else {
       timeData.textContent = parseTime(new Date(flight.arr_time));
     }
+
     row.appendChild(timeData);
 
     const airlineData = document.createElement("td");
+    airlineData.className = "hidden md:table-cell";
     const airlineName = this.airlinesMap[flight.airline_iata];
     airlineData.textContent = airlineName;
     row.appendChild(airlineData);
@@ -73,10 +77,16 @@ export default class FlightsList {
     row.appendChild(flightDataElem);
 
     const originData = document.createElement("td");
+    if (type === "departure") {
+      originData.className = "hidden md:table-cell";
+    }
     originData.textContent = flight.dep_iata;
     row.appendChild(originData);
 
     const destinationData = document.createElement("td");
+    if (type === "arrival") {
+      destinationData.className = "hidden md:table-cell";
+    }
     destinationData.textContent = flight.arr_iata;
     row.appendChild(destinationData);
 
