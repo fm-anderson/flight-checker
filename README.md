@@ -75,22 +75,20 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Screenshots (Desktop)
 
-**Home:** Light theme
+
 <img src="./src/images/screenshots/intro-light.png" width="600"/>
 
 ---
 
-**Home:** Dark theme.
+
 <img src="./src/images/screenshots/intro-dark.png" width="600"/>
 
 ---
 
-**Flight Table:** Light theme.
 <img src="./src/images/screenshots/table-light.png" width="600"/>
 
 ---
 
-**Flight Table:** Dark theme.
 <img src="./src/images/screenshots/table-dark.png" width="600"/>
 
 ---
