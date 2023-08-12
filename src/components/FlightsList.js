@@ -3,10 +3,11 @@ import { resFields } from "../js/const";
 import { parseTime } from "../js/helpers";
 
 export default class FlightsList {
-  constructor(countryCode) {
+  constructor(countryCode, type) {
     this.flightCounter = 0;
     this.airlinesMap = {};
     this.countryCode = countryCode;
+    this.type = type;
   }
 
   async fetchAirlines() {
@@ -50,12 +51,12 @@ export default class FlightsList {
 
     if (flight.arr_delayed) {
       const delayedTimeSpan = document.createElement("span");
-      delayedTimeSpan.className = "text-red-600 line-through";
+      delayedTimeSpan.className = "text-red-600 line-through hidden md:inline";
       delayedTimeSpan.textContent = parseTime(new Date(flight.arr_time));
       timeData.appendChild(delayedTimeSpan);
 
       const estimatedTimeSpan = document.createElement("span");
-      estimatedTimeSpan.className = "hidden md:inline";
+      estimatedTimeSpan.className = "inline";
       estimatedTimeSpan.textContent = ` ${parseTime(
         new Date(flight.arr_estimated)
       )}`;
