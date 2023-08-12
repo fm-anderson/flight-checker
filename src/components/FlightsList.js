@@ -50,7 +50,7 @@ export default class FlightsList {
 
     if (flight.arr_delayed) {
       const delayedTimeSpan = document.createElement("span");
-      delayedTimeSpan.className = "text-red-600 line-through md:hidden";
+      delayedTimeSpan.className = "text-red-600 line-through";
       delayedTimeSpan.textContent = parseTime(new Date(flight.arr_time));
       timeData.appendChild(delayedTimeSpan);
 
