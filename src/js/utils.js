@@ -2,7 +2,7 @@ import { themeChange } from "theme-change";
 import ArrivalFlightsList from "../components/ArrivalsFlightsList";
 import DepartureFlightsList from "../components/DepartureFlightsList";
 import { fetchAirports } from "./api";
-import { countries, loadCountries, setImageSrc } from "./helpers";
+import { checkIfTheme, countries, loadCountries, setImageSrc } from "./helpers";
 import {
   airportInput,
   clearButton,
@@ -16,6 +16,7 @@ import {
 
 // Set images src based on theme saved to local storage.
 themeChange();
+checkIfTheme();
 setImageSrc(navLogo);
 setImageSrc(heroImage);
 loadCountries();

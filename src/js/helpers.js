@@ -14,6 +14,12 @@ export function parseTime(date) {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
+export function checkIfTheme() {
+  if (!localStorage.getItem("theme")) {
+    localStorage.setItem("theme", "light");
+  }
+}
+
 export function setImageSrc(element) {
   let theme = localStorage.getItem("theme");
 
