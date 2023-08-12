@@ -49,11 +49,11 @@
         </button>
       </header>
 
-      <main id="content" class="w-full max-w-[100vw] px-8 py-8 lg:max-w-[98%]">
-        <div id="hero" class="grid grid-cols-2">
+      <main id="content" class="w-full px-8 py-8 lg:max-w-[98%]">
+        <div id="hero" class="grid grid-cols-1 md:grid-flow-col lg:grid-cols-2">
           <div>
             <h1
-              class="text-center text-3xl font-bold md:text-start lg:text-6xl"
+              class="text-center text-4xl font-bold md:text-start md:text-6xl"
             >
               Check Flight Status
               <span class="text-accent">From Home!</span>
@@ -65,12 +65,12 @@
               the comfort of your home.
             </p>
           </div>
-          <div class="flex justify-end">
-            <img id="hero-img" class="w-80" />
+          <div class="flex justify-center md:justify-end">
+            <img id="hero-img" class="w-60 lg:w-80" />
           </div>
         </div>
         <div class="flex justify-start">
-          <form id="form" class="join">
+          <form id="form" class="sm:join-vertical md:join">
             <input
               id="input-country"
               type="text"
@@ -78,7 +78,7 @@
               placeholder="Country"
               autocomplete="off"
               required
-              class="input join-item input-bordered"
+              class="input input-bordered join-item w-full md:w-1/3"
             />
             <input
               id="input-airport"
@@ -87,9 +87,11 @@
               placeholder="Airport"
               autocomplete="off"
               required
-              class="input join-item input-bordered w-96"
+              class="input input-bordered join-item mt-1 w-full md:mt-0 md:w-2/3 lg:w-96"
             />
-            <button class="btn join-item border-base-300 bg-base-300">
+            <button
+              class="btn join-item mt-1 w-full border-base-300 bg-base-300 md:mt-0 md:w-1/4 lg:w-1/5"
+            >
               See flights
             </button>
           </form>
@@ -108,12 +110,12 @@
         </div>
       </main>
 
-      <footer id="footer" class="footer items-center bg-base-200 p-4">
-        <div class="grid-flow-col items-center">
+      <footer id="footer" class="footer bg-base-300 p-4">
+        <div class="grid-flow-col justify-self-center md:justify-self-start">
           <p>Copyright © 2023 - Flight Checker</p>
         </div>
         <div
-          class="grid-flow-col gap-4 md:place-self-center md:justify-self-end"
+          class="grid-flow-col gap-4 justify-self-center md:justify-self-end"
         >
           <a
             href="https://github.com/fm-anderson/flight-checker"
