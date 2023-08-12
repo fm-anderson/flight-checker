@@ -1,5 +1,7 @@
 # Flight Checker
 
+<img src="./src/images/screenshots/intro-light.png" width="600"/>
+
 ## About The Project
 
 Instantly access real-time flight updates for global airports. Whether you're planning a trip, picking up a loved one, or just staying informed, get accurate, up-to-the-minute details all from the comfort of your home.
@@ -70,3 +72,35 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 [VatComply](https://vatcomply.com/) provides user geolocation.
 
 [RestCountries](https://restcountries.com/) provides auto-complete list.
+
+## Screenshots (Desktop)
+
+**Home:** Light theme
+<img src="./src/images/screenshots/intro-light.png" width="600"/>
+
+---
+
+**Home:** Dark theme.
+<img src="./src/images/screenshots/intro-dark.png" width="600"/>
+
+---
+
+**Flight Table:** Light theme.
+<img src="./src/images/screenshots/table-light.png" width="600"/>
+
+---
+
+**Flight Table:** Dark theme.
+<img src="./src/images/screenshots/table-dark.png" width="600"/>
+
+---
+
+## Screenshots (Mobile)
+
+<img src="./src/images/screenshots/intro-light-m.png" width="200"/>
+
+---
+
+<img src="./src/images/screenshots/intro-dark-m.png" width="200"/>
+
+---
