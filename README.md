@@ -34,7 +34,7 @@ This project was bootstrapped with [Vite](https://github.com/vitejs/vite). Ensur
    ```sh
    cd flight-checker
    ```
-3. Create a .env file in the project directory and add your API key:
+3. Create a .env file and add your API key from [AirLabs](https://airlabs.co/)
 
    ```sh
    echo "VITE_API_KEY=paste-api-key-without-quotes-here" > .env
@@ -67,19 +67,17 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## API
 
-[AirLabs](https://airlabs.co/) provides real-time flight status.
-
-[VatComply](https://vatcomply.com/) provides user geolocation.
-
-[RestCountries](https://restcountries.com/) provides auto-complete list.
+| API                                         | Solution                         |
+| ------------------------------------------- | -------------------------------- |
+| [AirLabs](https://airlabs.co/)              | Provides real-time flight status |
+| [VatComply](https://vatcomply.com/)         | Provides user geolocation        |
+| [RestCountries](https://restcountries.com/) | Provides auto-complete list      |
 
 ## Screenshots (Desktop)
-
 
 <img src="./src/images/screenshots/intro-light.png" width="600"/>
 
 ---
-
 
 <img src="./src/images/screenshots/intro-dark.png" width="600"/>
 
