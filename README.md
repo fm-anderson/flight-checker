@@ -57,7 +57,7 @@ This project was bootstrapped with [Vite](https://github.com/vitejs/vite). Ensur
 | Contributors     | GitHub                           |
 | ---------------- | -------------------------------- |
 | Anderson Marques | https://github.com/fm-anderson   |
-| Anthony Ranieri  | https://github.com/              |
+| Anthony Ranieri  | https://github.com/ajar67        |
 | Dillon Arnold    | https://github.com/Dillona25     |
 | Mirko Zlatunic   | https://github.com/mirkozlatunic |
 
