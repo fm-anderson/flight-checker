@@ -54,6 +54,13 @@ This project was bootstrapped with [Vite](https://github.com/vitejs/vite). Ensur
 
 [Git/Github Workflow](https://fm-anderson.notion.site/fm-anderson/GIT-GITHUB-WORKFLOW-36c62b18a2c4439797149d7c79a22d12)
 
+| Contributors     | GitHub                           |
+| ---------------- | -------------------------------- |
+| Anderson Marques | https://github.com/fm-anderson   |
+| Anthony Ranieri  | https://github.com/ajar67        |
+| Dillon Arnold    | https://github.com/Dillona25     |
+| Mirko Zlatunic   | https://github.com/mirkozlatunic |
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Libraries
