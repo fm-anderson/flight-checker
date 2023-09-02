@@ -31,7 +31,7 @@ export default class FlightsList {
   }
 
   showClearButton() {
-    const clearButton = document.querySelector("#clear-button");
+    const clearButton = document.querySelector(".form__clear-button");
     if (clearButton) {
       clearButton.classList.remove("hidden");
     }

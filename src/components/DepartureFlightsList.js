@@ -28,7 +28,7 @@ export default class DepartureFlightsList extends FlightsList {
     const tableDiv = table.querySelector("div");
     tableDiv.id = "dep-table";
 
-    const title = table.querySelector("#table-title");
+    const title = table.querySelector(".flights__title");
     title.textContent = "departure";
 
     const tableBody = table.querySelector("#table-content");

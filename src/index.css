@@ -1,3 +1,141 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .layout {
+    @apply flex h-screen flex-col items-center justify-between text-center;
+  }
+
+  .nav {
+    @apply navbar bg-base-200 px-4;
+  }
+
+  .nav__content {
+    @apply flex-1 gap-1;
+  }
+
+  .nav__logo {
+    @apply w-7;
+  }
+
+  .nav__title {
+    @apply text-xl font-semibold text-base-content no-underline;
+  }
+
+  .nav__theme-container {
+    @apply swap-rotate swap;
+  }
+
+  .nav__theme-light {
+    @apply pointer-events-none h-10 w-10 fill-current;
+  }
+
+  .nav__theme-dark {
+    @apply pointer-events-none h-10 w-10 fill-current;
+  }
+
+  .main {
+    @apply w-full px-8 py-8 lg:max-w-[98%];
+  }
+
+  .main__hero {
+    @apply grid grid-cols-1 md:grid-flow-col lg:grid-cols-2;
+  }
+
+  .main__title {
+    @apply text-center text-4xl font-bold md:text-start md:text-6xl;
+  }
+
+  .main__title-accent {
+    @apply text-accent;
+  }
+
+  .main__subtitle {
+    @apply py-6 text-start;
+  }
+
+  .main__image-container {
+    @apply flex justify-center md:justify-end;
+  }
+
+  .main__image {
+    @apply w-60 lg:w-80;
+  }
+
+  .form {
+    @apply flex justify-start;
+  }
+
+  .form__content {
+    @apply sm:join-vertical md:join;
+  }
+
+  .form__input-country {
+    @apply input input-bordered w-full md:w-1/3;
+  }
+
+  .form__input-airport {
+    @apply input input-bordered mt-1 w-full md:mt-0 md:w-2/3 lg:w-96;
+  }
+
+  .form__button {
+    @apply btn mt-1 w-full border-base-300 bg-base-300 md:mt-0 md:w-1/4 lg:w-1/5;
+  }
+
+  .form__clear {
+    @apply ml-2 flex-none gap-2;
+  }
+
+  .form__clear-button {
+    @apply btn btn-accent h-full md:h-0;
+  }
+
+  .form__validation {
+    @apply ml-1 mt-3 flex gap-1 align-middle text-secondary;
+  }
+
+  .form__validation-text {
+    @apply justify-start font-semibold;
+  }
+
+  .flights {
+    @apply grid grid-cols-1 gap-8 lg:grid-cols-2;
+  }
+
+  .footer__container {
+    @apply footer bg-base-300 p-4;
+  }
+
+  .footer__copyright {
+    @apply grid-flow-col justify-self-center md:justify-self-start;
+  }
+
+  .footer__link {
+    @apply grid-flow-col gap-4 justify-self-center md:justify-self-end;
+  }
+
+  .footer__link-text {
+    @apply text-base-content;
+  }
+
+  .flights__content {
+    @apply overflow-x-auto rounded-lg border-2;
+  }
+
+  .flights__header {
+    @apply bg-base-300;
+  }
+
+  .flights__title {
+    @apply py-2 font-mono text-sm;
+  }
+
+  .flights__table {
+    @apply table table-xs md:table-md;
+  }
+
+  .flights__airline {
+    @apply hidden md:flex;
+  }
+}

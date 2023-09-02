@@ -28,7 +28,7 @@ export default class ArrivalFlightsList extends FlightsList {
     const tableDiv = table.querySelector("div");
     tableDiv.id = "arr-table";
 
-    const title = table.querySelector("#table-title");
+    const title = table.querySelector(".flights__title");
     title.textContent = "arrivals";
 
     const tableBody = table.querySelector("#table-content");

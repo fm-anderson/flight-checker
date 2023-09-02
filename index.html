@@ -7,28 +7,21 @@
     <title>Flight Checker</title>
   </head>
   <body>
-    <div
-      id="app"
-      class="flex h-screen flex-col items-center justify-between text-center"
-    >
-      <header id="navbar" class="navbar bg-base-200 px-4">
-        <div class="flex-1 gap-1">
-          <img id="navbar-logo" class="w-7" />
-          <a href="/" class="no-underline">
-            <p class="text-xl font-semibold text-base-content">
-              Flight Checker
-            </p>
-          </a>
+    <div id="app" class="layout">
+      <header class="nav">
+        <div class="nav__content">
+          <img class="nav__logo" />
+          <a href="/" class="nav__title"> Flight Checker </a>
         </div>
         <button
-          class="theme-selector"
+          class="nav__theme"
           data-toggle-theme="light,dracula"
           data-act-class="ACTIVECLASS"
         >
-          <label class="swap-rotate swap">
+          <label class="nav__theme-container">
             <input type="checkbox" />
             <svg
-              class="swap-on pointer-events-none h-10 w-10 fill-current"
+              class="nav__theme-light swap-on"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -37,7 +30,7 @@
               />
             </svg>
             <svg
-              class="swap-off pointer-events-none h-10 w-10 fill-current"
+              class="nav__theme-dark swap-off"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -49,95 +42,81 @@
         </button>
       </header>
 
-      <main id="content" class="w-full px-8 py-8 lg:max-w-[98%]">
-        <div id="hero" class="grid grid-cols-1 md:grid-flow-col lg:grid-cols-2">
+      <main class="main">
+        <div class="main__hero">
           <div>
-            <h1
-              class="text-center text-4xl font-bold md:text-start md:text-6xl"
-            >
+            <h1 class="main__title">
               Check Flight Status
-              <span class="text-accent">From Home!</span>
+              <span class="main__title-accent">From Home!</span>
             </h1>
-            <p class="py-6 text-start">
+            <p class="main__subtitle">
               Instantly access real-time flight updates for global airports.
               Whether you're planning a trip, picking up a loved one, or just
               staying informed, get accurate, up-to-the-minute details all from
               the comfort of your home.
             </p>
           </div>
-          <div class="flex justify-center md:justify-end">
-            <img id="hero-img" class="w-60 lg:w-80" />
+          <div class="main__image-container">
+            <img class="main__image" />
           </div>
         </div>
-        <div class="flex justify-start">
-          <form id="form" class="sm:join-vertical md:join">
+
+        <div class="form">
+          <form class="form__content">
             <input
-              id="input-country"
               type="text"
               name="country"
               placeholder="Country"
               autocomplete="off"
               required
-              class="input join-item input-bordered w-full md:w-1/3"
+              class="form__input-country join-item"
             />
             <input
-              id="input-airport"
               type="text"
               name="airport"
               placeholder="Airport"
               autocomplete="off"
               required
-              class="input join-item input-bordered mt-1 w-full md:mt-0 md:w-2/3 lg:w-96"
+              class="form__input-airport join-item"
             />
-            <button
-              class="btn join-item mt-1 w-full border-base-300 bg-base-300 md:mt-0 md:w-1/4 lg:w-1/5"
-            >
-              See flights
-            </button>
+            <button class="form__button join-item">See flights</button>
           </form>
-          <div class="ml-2 flex-none gap-2">
-            <button
-              id="clear-button"
-              class="btn btn-accent hidden h-full md:h-0"
-            >
-              Clear
-            </button>
+          <div class="form__clear">
+            <button class="form__clear-button hidden">Clear</button>
           </div>
         </div>
-        <div class="ml-1 mt-3 flex gap-1 align-middle text-secondary">
-          <p id="invalid-data" class="justify-start font-semibold"></p>
+        <div class="form__validation">
+          <p class="form__validation-text"></p>
         </div>
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div class="flights">
           <div id="dep-container"></div>
           <div id="arr-container"></div>
         </div>
       </main>
 
-      <footer id="footer" class="footer bg-base-300 p-4">
-        <div class="grid-flow-col justify-self-center md:justify-self-start">
+      <footer class="footer__container">
+        <div class="footer__copyright">
           <p>Copyright © 2023 - Flight Checker</p>
         </div>
-        <div
-          class="grid-flow-col gap-4 justify-self-center md:justify-self-end"
-        >
+        <div class="footer__link">
           <a
             href="https://github.com/fm-anderson/flight-checker"
             target="_blank"
-            class="text-base-content"
+            class="footer__link-text"
             >GitHub Repository</a
           >
         </div>
       </footer>
       <template id="flights-table">
-        <div class="overflow-x-auto rounded-lg border-2">
-          <div class="bg-base-300">
-            <p id="table-title" class="py-2 font-mono text-sm"></p>
+        <div class="flights__content">
+          <div class="flights__header">
+            <p class="flights__title"></p>
           </div>
-          <table class="table table-xs md:table-md">
+          <table class="flights__table">
             <thead>
               <tr>
                 <th>TIME</th>
-                <th class="hidden md:flex">AIRLINE</th>
+                <th class="flights__airline">AIRLINE</th>
                 <th>FLIGHT</th>
                 <th>ORIGIN</th>
                 <th>DESTIN</th>
